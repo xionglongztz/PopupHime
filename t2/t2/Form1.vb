@@ -36,17 +36,17 @@ Public Class Form1
             TopMost = True '将自己窗口置顶以防止忽略
         End If
         If CmdLine = "1622882" Then '如果命令为16进制生日
-            MsgBox("恭喜你发现了里世界" & vbCrLf & "你以为这是一个彩蛋吗，然而并不是")
+            MsgBox("恭喜你发现了里世界" & vbCrLf & "你以为这是一个彩蛋吗，然而并不是" & vbCrLf & "这个数值转换成十进制是程序的生日")
             MsgBox("（我在这里卖个萌应该没人能发现吧）")
             MsgBox("啊，主人你干什么")
             MsgBox("呜呜呜主人你好坏...")
-            MsgBox("我要惩罚惩罚你，让你尝尝我的厉害，哈哈哈哈哈" & vbCrLf & "（电脑 危）") '恶魔低语
+            MsgBox("我要惩罚惩罚你，让你尝尝我的厉害，哈哈哈哈哈，啊哈哈哈哈哈" & vbCrLf & "（电脑 危）") '恶魔低语
             Dim Pnh '定义对话框返回值
             Pnh = MsgBox("弹窗间隔将改为1毫秒，可能会短时间占用大量系统资源，但你仍可以通过点击标签来暂停程序运行" & vbCrLf & "确定要继续吗"， MsgBoxStyle.YesNo + MsgBoxStyle.Exclamation, "要接受惩罚吗") '询问是否进行超强弹窗
             If Pnh = MsgBoxResult.Yes Then '点了是
                 Timer1.Enabled = True '开始弹窗
                 Opacity = 0 '使自己透明
-                Timer1.Interval = 1 '改为10毫秒
+                Timer1.Interval = 1 '改为1毫秒
                 WindowState = FormWindowState.Minimized '最小化
                 Exit Sub '跳过后续内容
             Else '否则
