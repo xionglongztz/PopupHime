@@ -3,6 +3,8 @@ Public Class Form1
     '弹窗姬 by 雄龙ztz
     'GitHub：xionglongztz
     'Bilibili：雄龙ztz
+    '初代发布时间：2021.01.13
+    '最近更新时间：2021.01.24
     '  ____                                __  __                            
     ' /\  _`\                             /\ \/\ \  __                       
     ' \ \ \L\ \___   _____   __  __  _____\ \ \_\ \/\_\    ___ ___      __   
@@ -12,6 +14,11 @@ Public Class Form1
     '     \/_/\/___/  \ \ \/  \/___/  \ \ \/  \/_/\/_/\/_/\/_/\/_/\/_/\/____/
     '                  \ \_\           \ \_\                                 
     '                   \/_/            \/_/                                 
+    '我赞同你们改编程序，例如自己原创弹窗条目等，但是请勿用于恶搞
+    '包括但不限于设置为开机启动项，攻击他人计算机等
+    '虽然这个项目最初想的也是为了恶搞，但是处于技术原因没能全部实现
+    '所以这个软件现在纯粹是个展现我技术能力的小玩具
+    '各位就随便看看就好了...
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick '计时器
         Dim frmNew As Form '定义新窗口
         frmNew = New Form2 '新窗口是form2
@@ -39,9 +46,9 @@ Public Class Form1
             MsgBox("恭喜你发现了里世界" & vbCrLf & "你以为这是一个彩蛋吗，然而并不是" & vbCrLf & "这个数值转换成十进制是程序的生日")
             MsgBox("（我在这里卖个萌应该没人能发现吧）")
             MsgBox("啊，主人你干什么")
-            MsgBox("呜呜呜主人你好坏...")
+            MsgBox("呜呜呜主人你好坏...") '开始觉醒腹黑属性
             MsgBox("我要惩罚惩罚你，让你尝尝我的厉害，哈哈哈哈哈，啊哈哈哈哈哈" & vbCrLf & "（电脑 危）") '恶魔低语
-            Dim Pnh '定义对话框返回值
+            Dim Pnh '定义对话框返回值(Punish)
             Pnh = MsgBox("弹窗间隔将改为1毫秒，可能会短时间占用大量系统资源，但你仍可以通过点击标签来暂停程序运行" & vbCrLf & "确定要继续吗"， MsgBoxStyle.YesNo + MsgBoxStyle.Exclamation, "要接受惩罚吗") '询问是否进行超强弹窗
             If Pnh = MsgBoxResult.Yes Then '点了是
                 Timer1.Enabled = True '开始弹窗
@@ -50,7 +57,14 @@ Public Class Form1
                 WindowState = FormWindowState.Minimized '最小化
                 Exit Sub '跳过后续内容
             Else '否则
-                Dispose(True) '退出
+                MsgBox("来都来了，你以为我会轻易放过你么") '加载一点小骚话
+                MsgBox("放心吧，既然你选择了否，那说明不希望自己的电脑被破坏")
+                MsgBox("你对我的DNA感兴趣么")
+                MsgBox("https://github.com/xionglongztz/PopUpHime")
+                MsgBox("你可以随意改变我，使我在其他计算机重生")
+                MsgBox("但是切记不能用于恶搞等手段，如果造成设备损坏，本开发者概不负责")
+                MsgBox("拜拜~")
+                Dispose() '关闭程序
             End If
         End If
         If CmdLine = "" Then '如果没有命令
@@ -71,6 +85,22 @@ Public Class Form1
             'TopMost = True '窗口置顶防止被忽略
             WindowState = FormWindowState.Minimized '最小化
         End If
+        Dim dKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize", True).GetValue("AppsUseLightTheme", "0") '判断是否为深色主题
+        If dKey = 0 Then '如果是深色主题
+            With Me '修改设置
+                .BackColor = Color.FromArgb(53, 54, 58)
+                .Label1.ForeColor = Color.FromArgb(218, 220, 224) '标签前景色
+                .Button1.ForeColor = Color.FromArgb(218, 220, 224) '按钮前景色
+                .Button1.BackColor = Color.FromArgb(53, 54, 58) '按钮背景色
+                .Button1.FlatStyle = FlatStyle.Flat '平面化
+                .Button2.ForeColor = Color.FromArgb(218, 220, 224) '按钮前景色
+                .Button2.BackColor = Color.FromArgb(53, 54, 58) '按钮背景色
+                .Button2.FlatStyle = FlatStyle.Flat '平面化
+                .TextBox1.ForeColor = Color.FromArgb(218, 220, 224) '文本框前景色
+                .TextBox1.BackColor = Color.FromArgb(32, 33, 36) '文本框背景色
+            End With
+        End If
+        MyBase.KeyPreview = True '窗体比控件提前相应键盘事件
     End Sub
     Private Sub TextBox1_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TextBox1.KeyPress '输入内容时
         If Char.IsDigit(e.KeyChar) Or e.KeyChar = Chr(8) Then '检测0-9，退格键
@@ -92,5 +122,11 @@ Public Class Form1
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click '取消
         Dispose(True) '关掉自己
+    End Sub
+
+    Private Sub Form1_KeyUp(sender As Object, e As KeyEventArgs) Handles Me.KeyUp '释放按键
+        If e.KeyCode = Keys.Escape Then '如果释放的是Esc键
+            Dispose() '退出程序
+        End If
     End Sub
 End Class

@@ -29,6 +29,7 @@ Partial Class Form1
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.SuspendLayout()
         '
         'Timer1
@@ -50,6 +51,7 @@ Partial Class Form1
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(120, 25)
         Me.TextBox1.TabIndex = 1
+        Me.ToolTip1.SetToolTip(Me.TextBox1, "请在此处输入数值（必须是纯数字）")
         '
         'Button1
         '
@@ -58,6 +60,7 @@ Partial Class Form1
         Me.Button1.Size = New System.Drawing.Size(121, 32)
         Me.Button1.TabIndex = 2
         Me.Button1.Text = "保存(&O)"
+        Me.ToolTip1.SetToolTip(Me.Button1, "保存设置，然后退出程序")
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Button2
@@ -67,6 +70,7 @@ Partial Class Form1
         Me.Button2.Size = New System.Drawing.Size(120, 32)
         Me.Button2.TabIndex = 3
         Me.Button2.Text = "取消(&C)"
+        Me.ToolTip1.SetToolTip(Me.Button2, "直接关闭程序")
         Me.Button2.UseVisualStyleBackColor = True
         '
         'Form1
@@ -94,4 +98,5 @@ Partial Class Form1
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
+    Friend WithEvents ToolTip1 As ToolTip
 End Class

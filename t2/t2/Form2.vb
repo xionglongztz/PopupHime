@@ -1,4 +1,5 @@
-﻿Public Class Form2
+﻿Imports System.ComponentModel
+Public Class Form2
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         '位置显示
         Dim WndX As New Integer, WndY As New Integer '定义x,y新的屏幕坐标
@@ -7,7 +8,7 @@
         WndY = Int(Rnd() * Screen.PrimaryScreen.Bounds.Height) - Height
         Location = New Point(WndX + Width, WndY + Height) '放置位置
         '内容显示
-        Dim mw As New List(Of String) '定义新的列表（窗口内容）
+        Dim mw As New List(Of String) '定义新的列表（窗口内容MeetingWords）
         Dim Ran As New Random() '定义新随机数
         Randomize() '伪随机（不产生重复的）
         mw.Add("我大意了啊，没有闪！")
@@ -59,7 +60,7 @@
         mw.Add("欸，弱欸，拜托你很弱欸，你现在知道谁是老大了吧") '杰哥不要
         mw.Add("鞋印梗是要扣钱的") '谐音梗
         mw.Add("我是练习时常两年半的独立软件弹窗姬，喜欢唱，跳，骗，偷袭") 'ikun马老师双厨狂喜
-        mw.Add("这个是24世纪才会有的窗口，因为发电厂计算机停电了，现在有了电脑让我重新活了回来，爷很高兴") 'b站评论区特色
+        mw.Add("这个是24世纪才会有的窗口，因为发电厂计算机停电了，现在有了电脑让我重新活了回来，爷很高兴") '爷喜欢的删减环节
         mw.Add("哈哈哈哈哈哈哈")
         mw.Add("你的双手是为了你的一生而服务的，而不是你的弹窗") 'osu
         mw.Add("适度弹窗益脑，沉迷弹窗伤身") '健康游戏忠告
@@ -113,15 +114,30 @@
         mw.Add("专属BGM:Astronomia") '黑人抬棺
         mw.Add("肥宅快乐窗")
         mw.Add("tips:点我可以暂停程序哦") '提示
-        mw.Add("Bin2Hex >_") '彩蛋提示①
+        mw.Add("Bin2Hex >_") '彩蛋提示①，指二进制转十六进制，并输入到终端命令行（Command Prompt Terminal）>_
         mw.Add("看弹窗就像抽奖，你不知道看到的下一个是什么弹窗，这不比游戏好玩多了？")
         mw.Add("我有一个大胆的想法")
-        mw.Add("/kill @e") '老mc了
-
+        mw.Add("/kill @e[type=Window]") '老mc了
+        mw.Add("喵内~") '星野日向
+        mw.Add("这个窗口100亿%关不掉的啊") '石纪元
+        mw.Add("没有人比我更懂弹窗") '某普
+        mw.Add("你现在不能游荡，周围有怪物在休息") 'mc梗x2
+        mw.Add("我已经是一个成熟的软件了，该学会自己玩梗了")
+        mw.Add("《好比是我每一个弹窗都这么多信息量你能不能坚持关完的故事》") '21年新番
+        mw.Add("弹窗姬，300岁，电脑应用程序，用花贝给开发者捐款") '捏他花呗广告
+        mw.Add("你今天要是能关掉我，我当场就把这个弹窗吃掉") '某本伟
+        mw.Add("你似乎来到了没有知识存在的荒原") '知乎
+        mw.Add("亲，这边建议您换台电脑呢") '老某宝客服了
+        mw.Add("哈他拉库") '工作细胞
+        mw.Add("真的是非常exciting啊") '毕导
+        mw.Add("低情商：把这个程序关了" & vbCrLf & "高情商：我给你重装个系统吧")
+        mw.Add("咱也不知道，咱也不敢问") '前几年的老梗了
+        mw.Add("tips:关掉任意一个窗口即可关闭程序，你也可以关掉任务栏图标来关闭程序")
+        mw.Add("tips:其实这个软件最初设置是有性别的（甚至连名字都有...）但是对于这样一个软件似乎没什么用")
         'mw.add("")'这行是便于添加新条目复制用的
         '随机显示内容
         Label1.Text = mw(Ran.Next(0, mw.Count)) '文本显示随机一条
-        Dim wdt As New List(Of String) '定义新的列表（窗口标题）
+        Dim wdt As New List(Of String) '定义新的列表（窗口标题WinDowTitle）
         Dim Rand As New Random() '定义新随机数
         Randomize() '伪随机（不产生重复的）
         wdt.Add("电脑发来了一条信息")
@@ -132,15 +148,35 @@
         wdt.Add("呜呜呜")
         wdt.Add("汪汪汪")
         wdt.Add("哈哈哈")
-        wdt.Add("哼，再也不理你了") '随机显示内容
+        wdt.Add("哼，再也不理你了")
+        wdt.Add("嗷呜~") '随机显示内容
         Text = wdt(Rand.Next(0, wdt.Count)) '文本显示随机一条
+        'tips:你可能不知道，网上关于"用VBdotNet来检测win10系统是否开启深色模式"的代码算法为0
+        '这个程序的检测代码是全网首发
+        '而且这个程序采用了一个很巧妙的方法，可以不用引入dwm之类的api，还很方便
+        Dim dKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize", True).GetValue("AppsUseLightTheme", "0") '判断是否为深色主题
+        If dKey = 0 Then '如果是深色主题
+            With Me '修改设置
+                .BackColor = Color.FromArgb(53, 54, 58)
+                .Label1.ForeColor = Color.FromArgb(218, 220, 224) '标签前景色
+            End With
+        End If
+        '开发者再吐槽一句：
+        '真的就没有一点关于win7以上系统dwm相关api的中文文档吗
+        '我啃生肉啃不动啊，哪怕来个例子也行啊
+        '难不成电脑真的要被手机取代了吧，那手机上软件都是在哪编写的？
+        '移动端怕不是真的成为主力了吧...
+        '国内软件商遇到不赚钱的项目就一点也不投资了？
+        '哪怕有个中文文档也好啊
     End Sub
-
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click '点击标签
         If Form1.Timer1.Enabled = True Then '如果正在运行
             Form1.Timer1.Enabled = False '取消运行
         Else '否则
             Form1.Timer1.Enabled = True '继续
         End If
+    End Sub
+    Private Sub Form2_Closed(sender As Object, e As CancelEventArgs) Handles Me.Closing '关掉这个窗口时
+        Form1.Dispose() '结束程序
     End Sub
 End Class
