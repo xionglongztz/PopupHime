@@ -1,0 +1,13 @@
+C:\Users\Lenovo\source\repos\t2\t2\obj\Debug\t2.vbprojAssemblyReference.cache
+C:\Users\Lenovo\source\repos\t2\t2\obj\Debug\t2.vbproj.GenerateResource.cache
+C:\Users\Lenovo\source\repos\t2\t2\obj\Debug\t2.vbproj.CoreCompileInputs.cache
+C:\Users\Lenovo\source\repos\t2\t2\bin\Debug\PopupHime.exe.config
+C:\Users\Lenovo\source\repos\t2\t2\bin\Debug\PopupHime.exe
+C:\Users\Lenovo\source\repos\t2\t2\bin\Debug\PopupHime.pdb
+C:\Users\Lenovo\source\repos\t2\t2\bin\Debug\PopupHime.xml
+C:\Users\Lenovo\source\repos\t2\t2\obj\Debug\PopupHime.Form1.resources
+C:\Users\Lenovo\source\repos\t2\t2\obj\Debug\PopupHime.Form2.resources
+C:\Users\Lenovo\source\repos\t2\t2\obj\Debug\PopupHime.Resources.resources
+C:\Users\Lenovo\source\repos\t2\t2\obj\Debug\PopupHime.exe
+C:\Users\Lenovo\source\repos\t2\t2\obj\Debug\PopupHime.xml
+C:\Users\Lenovo\source\repos\t2\t2\obj\Debug\PopupHime.pdb
