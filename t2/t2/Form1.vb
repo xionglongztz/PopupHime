@@ -5,6 +5,7 @@ Public Class Form1
     'Bilibili：雄龙ztz
     '初代发布时间：2021.01.13
     '最近更新时间：2021.01.24
+    '程序的生日：2321.01.14
     '  ____                                __  __                            
     ' /\  _`\                             /\ \/\ \  __                       
     ' \ \ \L\ \___   _____   __  __  _____\ \ \_\ \/\_\    ___ ___      __   
@@ -34,16 +35,14 @@ Public Class Form1
         End If
         Dim CmdLine '定义命令行参数
         CmdLine = Microsoft.VisualBasic.Command '获取命令行参数
-        If InStr(1, CmdLine, "-?") > 0 Or InStr(1, CmdLine, "/?") > 0 Then '如果有参数/?或者-?
-            MsgBox("Usage:" & vbCrLf & IO.Path.GetFileName(Application.ExecutablePath) & " [/s | /?]" & vbCrLf & "None    直接运行程序" & vbCrLf & "/s      打开设置界面" & vbCrLf & "/?      显示帮助", MsgBoxStyle.Information, "命令行参数") '显示帮助
+        If InStr(1, CmdLine, "/?") > 0 Or InStr(1, CmdLine, "-?") > 0 Then '如果有参数/?
+            MsgBox("Usage:" & vbCrLf & IO.Path.GetFileName(Application.ExecutablePath) & " [/s | /? | /c] [/n]" & vbCrLf & "无     直接运行程序" & vbCrLf & "/s      打开设置界面" & vbCrLf & "/?      显示帮助" & vbCrLf & "/c      进入疯狂模式" & vbCrLf & "/n      不提醒直接进入疯狂模式" & vbCrLf & "         该参数只能和 /c 一起使用", MsgBoxStyle.Information, "命令行参数") '显示帮助
             End '显示帮助后关闭
-        End If
-        If InStr(1, CmdLine, "-s") > 0 Or InStr(1, CmdLine, "/s") > 0 Or InStr(1, CmdLine, "-S") > 0 Or InStr(1, CmdLine, "/S") > 0 Then '如果有参数-s(S),/s(S)的任意一个
+        ElseIf InStr(1, CmdLine, "/s") > 0 Or InStr(1, CmdLine, "/S") > 0 Or InStr(1, CmdLine, "-s") > 0 Or InStr(1, CmdLine, "-S") > 0 Then '如果有参数/s
             Timer1.Enabled = False '禁止启动弹窗
             TopMost = True '将自己窗口置顶以防止忽略
-        End If
-        If CmdLine = "1622882" Then '如果命令为16进制生日
-            MsgBox("恭喜你发现了里世界" & vbCrLf & "你以为这是一个彩蛋吗，然而并不是" & vbCrLf & "这个数值转换成十进制是程序的生日")
+        ElseIf CmdLine = "1622882" Then '如果命令为16进制生日
+            MsgBox("密码正确" & vbCrLf & "恭喜你发现了里世界" & vbCrLf & "你以为这是一个彩蛋吗，然而并不是" & vbCrLf & "（这个数值转换成十进制是程序的生日）")
             MsgBox("（我在这里卖个萌应该没人能发现吧）")
             MsgBox("啊，主人你干什么")
             MsgBox("呜呜呜主人你好坏...") '开始觉醒腹黑属性
@@ -66,8 +65,29 @@ Public Class Form1
                 MsgBox("拜拜~")
                 Dispose() '关闭程序
             End If
-        End If
-        If CmdLine = "" Then '如果没有命令
+        ElseIf InStr(1, CmdLine, "/c") > 0 Or InStr(1, CmdLine, "/C") > 0 Or InStr(1, CmdLine, "-c") > 0 Or InStr(1, CmdLine, "-C") > 0 Then '如果有参数/c（为某些使用vm牌电脑的勇士准备的专门的选项）
+            Dim Ques1 = MsgBox("该程序将强行使用1毫秒的弹窗间隔，并且变得更难关闭，该程序所有快捷键将无法使用，同时程序也会强行将窗口置于最前" & vbCrLf & "确定要继续吗", MsgBoxStyle.YesNo + MsgBoxStyle.Exclamation, "开启疯狂模式")
+            If Ques1 = MsgBoxResult.Yes Then '第一次点了是
+                Dim Ques2 = MsgBox("确定要继续吗", MsgBoxStyle.YesNo + MsgBoxStyle.Exclamation, "最后一次提醒")
+                If Ques2 = MsgBoxResult.Yes Then '点了是
+                    Timer1.Enabled = True '开始弹窗
+                    Hide() '隐藏窗体
+                    Timer1.Interval = 1 '改为1毫秒
+                    Tag = "1" '标签改为1
+                    Exit Sub '跳过后续内容
+                Else '否则（第二次点了否）
+                    Dispose() '关闭程序
+                End If
+            Else '否则（第一次点了否）
+                Dispose() '关闭程序
+            End If
+        ElseIf InStr(1, CmdLine, "/c /n") > 0 Then '如果有参数/c /n
+            Timer1.Enabled = True '开始弹窗
+            Hide() '隐藏窗体
+            Timer1.Interval = 1 '改为1毫秒
+            Tag = "1" '标签改为1
+            Exit Sub '跳过后续内容
+        Else '如果没有命令或者其他情况
             Timer1.Enabled = True '初始化计时器（如果没有操作那就运行）
         End If
         '读取设置
@@ -101,6 +121,9 @@ Public Class Form1
             End With
         End If
         MyBase.KeyPreview = True '窗体比控件提前相应键盘事件
+        If Tag = "1" Then '如果标签为1
+            ShowInTaskbar = False '取消显示任务栏图标
+        End If
     End Sub
     Private Sub TextBox1_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TextBox1.KeyPress '输入内容时
         If Char.IsDigit(e.KeyChar) Or e.KeyChar = Chr(8) Then '检测0-9，退格键
@@ -119,14 +142,14 @@ Public Class Form1
         End If
         Dispose(True) '退出
     End Sub
-
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click '取消
         Dispose(True) '关掉自己
     End Sub
-
     Private Sub Form1_KeyUp(sender As Object, e As KeyEventArgs) Handles Me.KeyUp '释放按键
         If e.KeyCode = Keys.Escape Then '如果释放的是Esc键
             Dispose() '退出程序
+        ElseIf e.KeyCode = Keys.Enter Then '如果是回车
+            Button1_Click(sender, e) '激活保存按钮
         End If
     End Sub
 End Class

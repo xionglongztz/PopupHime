@@ -27,7 +27,7 @@ Partial Class Form2
         '
         'Label1
         '
-        Me.Label1.Location = New System.Drawing.Point(12, 9)
+        Me.Label1.Location = New System.Drawing.Point(12, 6)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(212, 85)
         Me.Label1.TabIndex = 0
