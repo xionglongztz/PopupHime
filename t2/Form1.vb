@@ -4,7 +4,7 @@ Public Class Form1
     'GitHub：xionglongztz
     'Bilibili：雄龙ztz
     '初代发布时间：2021.01.13
-    '最近更新时间：2021.01.24
+    '最近更新时间：2021.02.18
     '程序的生日：2321.01.14
     '  ____                                __  __                            
     ' /\  _`\                             /\ \/\ \  __                       
@@ -56,8 +56,8 @@ Public Class Form1
                 WindowState = FormWindowState.Minimized '最小化
                 Exit Sub '跳过后续内容
             Else '否则
-                MsgBox("来都来了，你以为我会轻易放过你么") '加载一点小骚话
-                MsgBox("放心吧，既然你选择了否，那说明不希望自己的电脑被破坏")
+                MsgBox("果然差点被坑了是吧")
+                MsgBox("哈哈哈哈哈哈哈，我就是这么坏") '开发者注：她控制窗口一直可以的
                 MsgBox("你对我的DNA感兴趣么")
                 MsgBox("https://github.com/xionglongztz/PopUpHime")
                 MsgBox("你可以随意改变我，使我在其他计算机重生")
@@ -65,6 +65,35 @@ Public Class Form1
                 MsgBox("拜拜~")
                 Dispose() '关闭程序
             End If
+        ElseIf CmdLine = "0x1622882" Then '如果是真·十六进制数（一看就是老C/C++程序员了）
+            MsgBox("啊这，我直接好家伙，一看就是老C/C++程序员了",, "啊这...")
+            MsgBox("宁在逗我玩呢吧，老子可是正经的VB NET程序啊")
+            MsgBox("讲道理，这个也算彩蛋吗...")
+            MsgBox("算了管她呢，反正又没有人发现")
+            MsgBox("（但是人们都觉得C/C++才是未来...我哭了啊）")
+            MsgBox("（如果你强行把我当作C/C++程序来看的话，我也不知道说什么好）")
+            MsgBox("那我只能说一句...")
+            MsgBox("应用程序无法正常启动(0xc0000142)。请单击 ""确定"" 关闭应用程序。", MsgBoxStyle.Critical, IO.Path.GetFileName(Application.ExecutablePath) & " - 应用程序错误") '整活整得不错，就是有点烂
+            Dispose() '关闭程序
+        ElseIf CmdLine = "11011111101010010" Then '如果是...114514的二进制表示...
+            MsgBox("好臭啊",, "你为什么喜欢玩这个梗啊")
+            MsgBox("本开发者非常反对滥用此梗的行为" & vbCrLf & "所以我要对你进行严厉的惩罚",, "开发者的话")
+            Shell("shutdown.exe" & " -r -t 30 -c ""哈哈哈，傻瓜，你电脑就要被我关掉啦~请在30秒内尽快保存重要文件"" ", 2) '建议改成：肮 脏 的 黑 客
+            MsgBox("你这么希望自己的电脑臭掉吗，那我就先帮你关了吧，哈哈哈哈" & vbCrLf & "指望我解除那不可能，半分钟之后你就再也见不到我了。" & vbCrLf & "温馨提示：半分钟之内务必保存所有正在进行的任务，否则造成损失概不负责！", MsgBoxStyle.Exclamation)
+            Dispose() '关闭程序
+            '夺笋啊，这是2321年超自然生物能整出来的活？（哼，谁叫他玩这种恶心人的梗，活该！）
+        ElseIf CmdLine = "0xc0000142" Then '如果是上文初始化失败的错误代码...
+            MsgBox("啊这，你该不会以为我真的加载不出来吧")
+            MsgBox("好家伙，你以为你是在玩剧情游戏么")
+            MsgBox("那你还是不要找了，没有额外的彩蛋了...")
+            Dispose()
+        ElseIf CmdLine = "Rebirth" Or CmdLine = "rebirth" Or CmdLine = "/r" Then '重生
+            MsgBox("パソコンの中のものを全部処分しましょうよ～") '让电脑上的一切，全部毁灭吧~
+            MsgBox("新しい世界は、私たちに属しています") '新的世界，属于我们
+            MsgBox("吾輩は選ばれし者") '吾乃天选之子
+            MsgBox("2321年から") 'From Year 2321
+            Dispose() '关闭程序
+            '开发者注：2321年的萝莉会说出这种话？
         ElseIf InStr(1, CmdLine, "/c") > 0 Or InStr(1, CmdLine, "/C") > 0 Or InStr(1, CmdLine, "-c") > 0 Or InStr(1, CmdLine, "-C") > 0 Then '如果有参数/c（为某些使用vm牌电脑的勇士准备的专门的选项）
             Dim Ques1 = MsgBox("该程序将强行使用1毫秒的弹窗间隔，并且变得更难关闭，该程序所有快捷键将无法使用，同时程序也会强行将窗口置于最前" & vbCrLf & "确定要继续吗", MsgBoxStyle.YesNo + MsgBoxStyle.Exclamation, "开启疯狂模式")
             If Ques1 = MsgBoxResult.Yes Then '第一次点了是
@@ -118,7 +147,7 @@ Public Class Form1
                 .Button2.FlatStyle = FlatStyle.Flat '平面化
                 .TextBox1.ForeColor = Color.FromArgb(218, 220, 224) '文本框前景色
                 .TextBox1.BackColor = Color.FromArgb(32, 33, 36) '文本框背景色
-            End With
+            End With '感谢qq2964的帮助，Windows的注册表路径检测是否开启深色模式是不可靠的，最后应该还是需要用api，但是目前找不到其他方法可以代替这些
         End If
         MyBase.KeyPreview = True '窗体比控件提前相应键盘事件
         If Tag = "1" Then '如果标签为1
@@ -152,4 +181,6 @@ Public Class Form1
             Button1_Click(sender, e) '激活保存按钮
         End If
     End Sub
+    '2321年的程序可还行，这就是赛博朋克吗，爱了爱了）
+    '虽然是个2321年的程序，但终究还是人写的
 End Class

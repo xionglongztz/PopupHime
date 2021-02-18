@@ -8,6 +8,7 @@ Public Class Form2
         '|                             |
         '|                             |
         '|_____________________________|
+        '这个图片更换字体之后排版就乱了...
         '窗体如图所示
         '位置显示
         Dim WndX As New Integer, WndY As New Integer '定义x,y新的屏幕坐标
@@ -39,6 +40,7 @@ Public Class Form2
         mw.Add(":(你的电脑出现问题，需要重新启动") 'Windows10蓝屏
         '被骗了吧，哈哈哈哈哈，啊哈哈哈哈哈
         '开发者：这个程序是个腹黑的小萝莉，心眼儿多的恨（但是并不是粉毛...）
+        '300岁的萝莉还行
         '开发者日常犯中二病ing...
         mw.Add("点击查看：开发者早期驯服野生窗口珍贵录像")
         mw.Add("点击展开")
@@ -60,13 +62,13 @@ Public Class Form2
         mw.Add("肥料掺了银克拉，不流失，不蒸发，O浪费") '骨粉广告词
         mw.Add("你掉的是这个金克拉，还是这个银克拉，还是这个查克拉呢") '多厨爆炸
         mw.Add("酸甜苦辣咸，窗口天天见") '出自 喜羊羊与灰太狼之懒羊羊当大厨
-        mw.Add("如果窗口有颜色，那她一定是白色") '深色模式已更新，窗口再也不是一片白了，能保证弹窗的同时保护用户的眼睛，真是良心开发者啊
+        mw.Add("如果窗口有颜色，那她一定是白色（你可以尝试win10深色模式，如果已经设置请忽略）") '深色模式已更新，窗口再也不是一片白了，能保证弹窗的同时保护用户的眼睛，真是良心开发者啊
         '确定不是凉心开发者吗？
         mw.Add("没用的窗口不要扔，裹上鸡蛋液，粘上面包糠，炸至两面金黄，隔壁小孩馋哭了") '跨次元壁还行
         mw.Add("你打音游像东方，你打东方像音游")
         mw.Add("0001011000100010100010000010") '23210114程序出生日（转换成HEX16进制作为指令输入程序）彩蛋提示②
         mw.Add("竖起大拇指，自信音游人")
-        mw.Add("你问我几岁，你问的太多了") 'Muse Dash（慕斯大师，这是一个凭本事做慕斯蛋糕的游戏）（实际上设定为300岁）
+        mw.Add("你问我几岁，你问的太多了") 'Muse Dash（慕斯大师，这是一个凭本事做慕斯蛋糕的游戏）（实际上本程序设定为300岁）
         '一本正经的胡说八道
         mw.Add("E S M 跑") '音游梗
         mw.Add("你为什么不问问神奇海螺呢") '海绵宝宝
@@ -164,7 +166,7 @@ Public Class Form2
         mw.Add("tips:Esc可以关闭当前弹窗")
         mw.Add("tips:空格或点击标签可以暂停程序运行")
         mw.Add("tips:按下F1可以直接复制选中弹窗的标签内容了")
-        mw.Add("tips:其实这个软件最初设置是有性别的（甚至连人设名字都有...）但是对于这样一个软件似乎没什么用")
+        mw.Add("tips:其实这个软件最初设置是女性（甚至连人设都有...）但是对于这样一个软件似乎没什么用")
         '果然卖萌本性南移啊（
         mw.Add("我是一只小可耐~小可耐啊真可爱")
         mw.Add("主人不要把我关掉好么，球球你惹") '纯卖萌
@@ -232,34 +234,44 @@ Public Class Form2
         mw.Add("使生态系统达到或保持平衡或稳态，结果是抑制和减弱最初发生变化的那种成分的变化") '老负反馈调节了（高中生物の痛）
         '好家伙，高中理科都快被你玩坏了（
         '傲娇三定律已登场完毕，请继续你的骚话（（
-        mw.Add("坐下，这是Windows基本操作") '老基本操作了
-        mw.Add("如果你发现程序人设和时间线上的设定错误，这是一个bug，请反馈开发者进行修复") '重新定义bug
-        mw.Add("OK兄弟们，全体目光向我看齐啊，看我看我，我宣布个事儿") '伞兵（
+        mw.Add("坐下，这是 Windows 基本操作") '老基本操作了
+        mw.Add("如果你发现程序人设和时间线上的设定错误，这是一个 bug，请反馈开发者进行修复") '重新定义bug
+        mw.Add("OK兄弟们，全体目光向我看齐啊，看我看我，我宣布个事儿") '独立宣言 - 萌宠标签就离谱
+        mw.Add("代码千万条，注释第一条，编程不规范，程序两行泪") '流浪地球广告
+        mw.Add("建国后不许成精") '不仅成了精，而且还延续了300年...
+        mw.Add("动作指导：Windows 函数") '因为是这些函数决定窗口随机出现的位置
+        mw.Add("危 弹窗姬 危")
+        mw.Add("(╥ω╥`)") '一个特别可爱的表情
 
         '！！！骚话反应已结束，接下来是后续处理工作...
         '程序已经如梦初醒般的注入了灵魂...
         '大家就当无事发生
         '随机显示内容
         Label1.Text = mw(Ran.Next(0, mw.Count)) '文本显示随机一条
-        Dim wdt As New List(Of String) '定义新的列表（窗口标题WinDowTitle）
+        Dim wdt As New List(Of String) From {
+         "电脑发来了一条信息",
+         "我才不是玩梗小鬼呢",
+         "你的电脑报废了呦",
+         "喵喵喵",
+         "我要咬你啊~",
+         "呜呜呜",
+         "汪汪汪",
+         "哈哈哈",
+         "哼，再也不理你了",
+         "嗷呜~"
+         } '再次感谢qq2964，这里精简了不少
+        '定义新的列表（窗口标题WinDowTitle）
         Dim Rand As New Random() '定义新随机数
         Randomize() '伪随机（不产生重复的）
-        wdt.Add("电脑发来了一条信息")
-        wdt.Add("我才不是玩梗小鬼呢")
-        wdt.Add("你的电脑报废了呦")
-        wdt.Add("喵喵喵")
-        wdt.Add("我要咬你啊~")
-        wdt.Add("呜呜呜")
-        wdt.Add("汪汪汪")
-        wdt.Add("哈哈哈")
-        wdt.Add("哼，再也不理你了")
-        wdt.Add("嗷呜~") '随机显示内容
+        '随机显示内容
         Text = wdt(Rand.Next(0, wdt.Count)) '文本显示随机一条
         'tips:你可能不知道，网上关于"用VBdotNet来检测win10系统是否开启深色模式"的代码算法为0
         '这个程序的检测代码是全网首发
         '而且这个程序采用了一个很巧妙的方法，可以不用引入dwm之类的api，还很方便
+        '（不过要实时检测变化就需要监听 WM_DWMCOLORIZATIONCOLORCHANGED 消息...还是得引入api...所以这个算法还有不足之处）
         Dim colorKey = Hex(Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\History\Colors", True).GetValue("ColorHistory0", "0")) '获取系统颜色(并转换为十六进制)
         '格式为AABBGGRR，暂时没有用上此行代码，以后可能会用到
+        'https://docs.microsoft.com/zh-cn/windows/win32/dwm/functions?redirectedfrom=MSDN 这个是官方对DWM的讲解介绍，希望有大佬做一些相关实例
         Dim dKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize", True).GetValue("AppsUseLightTheme", "0") '判断是否为深色主题
         If dKey = 0 Then '如果是深色主题
             With Me '修改设置
@@ -280,7 +292,6 @@ Public Class Form2
         End If
         'Label1.Text = "A cute loli sitting on the window" '新条目测试预览专用（覆盖所有随机内容，以测试排版和效果）
         '好家伙，加上这个代码前面的灵魂白注入了
-        'Label1.Text = "叮~" & vbCrLf & "IndiHime" & vbCrLf & "120.000 233.000" & vbCrLf & "666.000 750.000" & vbCrLf & "打五把CSGO"
 
     End Sub
     Private Sub Form2_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown '按下键盘时
